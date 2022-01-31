@@ -1,13 +1,170 @@
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: url('../public/images/backgroundImg.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;;
+  font-family: 'Orbitron', sans-serif;
+  font-variant: small-caps;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+img{
+  width: 220px;
+  height: 220px;
+}
+.container{
+  width: 28rem;
+  height: 85%;
+  background-color: white;
+  box-shadow: 0px 0px 9px 8px rgba(0,0,0,0.67);
+  background-color: rgb(44, 44, 44);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.idContainer{
+  text-align: right;
+  margin: 0;
+}
+.idContainer>p{
+  margin-right: 1rem;
+  padding-top: 1rem;
+  font-size: 20px;
+  color: white;
+}
+.imgContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 50px 50px;
+  padding: 1rem;
+}
+#btn{
+  margin: 1rem 1rem 0rem;
+}
+p{
+  margin: 0;
+}
+h1{
+  margin: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.nameContainer, .typeContainer, .typeBox, .heiWeiContainer, .stats, .title, .values, .statsContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.typeContainer{
+  flex-direction: row;
+}
+.typeBox{
+  margin: 0 1rem 0 1rem;
+  border-radius: 20px;
+  padding: 0.3rem 2rem 0.3rem 2rem;
+  color: white
+}
+.heiWeiContainer{
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+.height, .weight{
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.weightLabel, .heightLabel{
+  font-size: 1rem;
+}
+.statsContainer{
+  flex-direction: column;
+}
+.title, .values{
+  flex-direction: column;
+}
+.tile{
+  margin: 0 5rem 0 0;
+}
+.values{
+  margin: 0 0 0 5rem;
+}
+#normal{
+  background-color: #A8A878;
+}
+#bug{
+  background-color: #A8B820;
+}
+#fire{
+  background-color: #F08030;
+}
+#water{
+  background-color: #6890F0;
+}
+#grass{
+  background-color: #78C850;
+}
+#poison{
+  background-color: #A040A0;
+}
+#electric{
+  background-color: #F8D030;
+}
+#rock{
+  background-color: #B8A038;
+}
+#ground{
+  background-color: #E0C068;
+}
+#fairy{
+  background-color: #F0B6BC;
+}
+#fighting{
+  background-color: #C03028;
+}
+#flying{
+  background-color: #A890F0;
+}
+#psychic{
+  background-color: #F85888;
+}
+#steel{
+  background-color: #B8B8D0;
+}
+#ice{
+  background-color: #98D8D8;
+}
+#ghost{
+  background-color: #705898;
+}
+#dark{
+  background-color: #705848;
+}
+#dragon{
+  background-color: #7038F8;
+}
+.HP, .ATK, .DEF, .SPD, .EXP{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width:500px) {
+  .container{
+    width: 90%;
+  }
+  img{
+    width: 180px;
+    height: 180px;
+  }
 }
