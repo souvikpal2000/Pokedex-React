@@ -11,28 +11,33 @@ import Buttons from "./Components/Buttons";
 
 const App = () => {
     let [count, setCount] = useState(1);
-    let [name, setName] = useState("");
-    let [type, setType] = useState();
-    let [weight, setWeight] = useState();
-    let [height, setHeight] = useState();
-    let [stats, setStats] = useState();
-    let [image, setImage] = useState();
+    let [values, setValues] = useState({
+        name: "",
+        type: "",
+        weight: 0,
+        height: 0,
+        stats: "",
+        image: ""
+    })
 
     useEffect(() => {
-        async function fetchData() {
+        (async function(){
             const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${count}`);
-            setName(res.data.name);
-            setType(res.data.types);
-            setWeight(res.data.weight/10);
-            setHeight(res.data.height/10);
             const arr = res.data.stats;
             let newArr = arr.filter((data, index) => {
                 return (index === 0 || index === 1 || index === 2 || index === 5)
             })
-            setStats(newArr);
-            setImage(res.data.sprites.other.dream_world.front_default);
-        }
-        fetchData();
+            setValues((preValues) => {
+                return{
+                    name: res.data.name,
+                    type: res.data.types,
+                    weight: res.data.weight/10,
+                    height: res.data.height/10,
+                    stats: newArr,
+                    image: res.data.sprites.other.dream_world.front_default
+                }
+            })
+        })();
     }, [count])
 
     const minus = () => {
@@ -48,12 +53,12 @@ const App = () => {
     return(
         <React.Fragment>
             <div className="container">
-                <Id typeName={type} no={count} />
-                <Image typeName={type} pokeImg={image} pokeName={name} />
-                <Name pokeName={name} />
-                <Type typeName={type} />
-                <WeiHeight weightValue={weight} heightValue={height} />
-                <Stats statsValue={stats} />
+                <Id typeName={values.type} no={count} />
+                <Image typeName={values.type} pokeImg={values.image} pokeName={values.name} />
+                <Name pokeName={values.name} />
+                <Type typeName={values.type} />
+                <WeiHeight weightValue={values.weight} heightValue={values.height} />
+                <Stats statsValue={values.stats} />
             </div>
             <div className="btnContainer">
                 <Buttons backFunc={minus} forwardFunc={plus} /> 
