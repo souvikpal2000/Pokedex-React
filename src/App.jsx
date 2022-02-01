@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Fab from '@mui/material/Fab';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import Stack from '@mui/material/Stack';
-import Rating from '@mui/material/Rating';
-import StarIcon from "@mui/icons-material/Star";
+
+import Id from "./Components/Id";
+import Image from "./Components/Image";
+import Name from "./Components/Name";
+import Type from "./Components/Type";
+import WeiHeight from "./Components/WeiHeight";
+import Stats from "./Components/Stats";
+import Buttons from "./Components/Buttons";
 
 const App = () => {
     let [count, setCount] = useState(1);
@@ -46,64 +48,15 @@ const App = () => {
     return(
         <React.Fragment>
             <div className="container">
-                <div className="idContainer" id={type && type[0].type.name}>
-                    <p>#{count}</p>
-                </div>
-                <div className="imgContainer" id={type && type[0].type.name}>
-                    <img src={image} alt={name} />
-                </div>
-                <div className="nameContainer">
-                    <h1>{name}</h1>
-                </div>
-                <div className="typeContainer">
-                    {type && type.map((data,index) => {
-                        return (
-                            <div className="typeBox" id={data.type.name} key={index}>
-                                <p className="type">{data.type.name}</p>
-                            </div>       
-                        )
-                    })}
-                </div>
-                <div className="heiWeiContainer">
-                    <div className="weight">
-                        <p>{weight} KG</p>
-                        <p className="weightLabel">Weight</p>
-                    </div>
-                    <div className="height">
-                        <p>{height} M</p>
-                        <p className="heightLabel">Height</p>
-                    </div>
-                </div>
-                <div className="statsContainer">
-                    <h2>Base Stats</h2>
-                    <div className="stats">
-                        <div className="title">
-                            <Stack spacing={2.1}>
-                                <p>HP</p>
-                                <p>ATK</p>
-                                <p>DEF</p>
-                                <p>SPD</p>
-                            </Stack>
-                        </div>
-                        <div className="values">
-                            <Stack spacing={1.5}>
-                                {stats && stats.map((data, index) => {
-                                    return(
-                                        <Rating name="read-only" readOnly key={index} value={(data.base_stat/224)*5} precision={0.5} emptyIcon={<StarIcon style={{ opacity: 1, color: 'white' }} />} />
-                                    )
-                                })}
-                            </Stack>
-                        </div>
-                    </div>
-                </div>
+                <Id typeName={type} no={count} />
+                <Image typeName={type} pokeImg={image} pokeName={name} />
+                <Name pokeName={name} />
+                <Type typeName={type} />
+                <WeiHeight weightValue={weight} heightValue={height} />
+                <Stats statsValue={stats} />
             </div>
             <div className="btnContainer">
-                <Fab size="medium" color="primary" aria-label="add" id="btn" onClick={minus}>
-                    <ArrowLeftIcon className="left" />
-                </Fab>
-                <Fab size="medium" color="primary" aria-label="add" id="btn" onClick={plus}>
-                    <ArrowRightIcon className="right" />
-                </Fab>
+                <Buttons backFunc={minus} forwardFunc={plus} /> 
             </div>
         </React.Fragment>
     )
